@@ -16,6 +16,9 @@ RUN npm ci || npm install
 # Copy Laravel files
 COPY . .
 
+# Create .env file from .env.example if it doesn't exist
+RUN if [ ! -f .env ]; then cp .env.example .env; fi
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
