@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["nodejs_22", "php", "composer"]
+
+[phases.build]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm ci",
+  "npm run build"
+]
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+
+[variables]
+PHP_VERSION = "8.3"
+NODE_VERSION = "22"
