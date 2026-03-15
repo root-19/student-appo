@@ -19,6 +19,16 @@ COPY . .
 # Create .env file from .env.example if it doesn't exist
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
+# Set environment variables for Railway database
+ENV DB_CONNECTION=mysql
+ENV DB_HOST=mysql.railway.internal
+ENV DB_PORT=3306
+ENV DB_DATABASE=railway
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=ZsjIxTHCLMYdzkLFEBacqtfHRsDYXCaM
+ENV APP_ENV=production
+ENV APP_DEBUG=false
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
