@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Install dependencies
+# Install PHP dependencies
 composer install --no-dev --optimize-autoloader
+
+# Install Node dependencies and build
+npm ci
+npm run build
 
 # Generate application key if not exists
 php artisan key:generate --force
