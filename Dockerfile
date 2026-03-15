@@ -10,8 +10,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install Node dependencies
-RUN npm ci
+# Install Node dependencies (fallback to npm install if lock file doesn't exist)
+RUN npm ci || npm install
 
 # Copy Laravel files
 COPY . .
