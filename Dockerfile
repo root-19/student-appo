@@ -2,7 +2,7 @@
 FROM node:22-alpine AS node
 
 # Install PHP and Composer
-RUN apk add --no-cache php8 php8-dom php8-mbstring php8-xml php8-pdo php8-pdo_mysql composer
+RUN apk add --no-cache php php-dom php-mbstring php-xml php-pdo php-pdo_mysql composer
 
 # Set working directory
 WORKDIR /app
