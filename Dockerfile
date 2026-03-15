@@ -1,8 +1,8 @@
 # Use Node.js 22 as base image
 FROM node:22-alpine AS node
 
-# Install PHP and Composer
-RUN apk add --no-cache php php-dom php-mbstring php-xml php-pdo php-pdo_mysql composer
+# Install PHP and Composer with all required extensions
+RUN apk add --no-cache php php-dom php-mbstring php-xml php-pdo php-pdo_mysql composer php-session php-fileinfo php-tokenizer php-curl php-zip php-openssl php-iconv
 
 # Set working directory
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN npm ci || npm install
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
 # Generate application key
 RUN php artisan key:generate
