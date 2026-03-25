@@ -68,6 +68,9 @@ class Ticket extends Model
             $array['studentEmail'] = null;
         }
         
+        // Map database fields to frontend expectations
+        $array['studentName'] = $this->student_name;
+        
         // Format attachment
         if ($this->attachment_name) {
             $array['attachment'] = [
@@ -91,7 +94,8 @@ class Ticket extends Model
         // Remove snake_case fields
         unset($array['ticket_id'], $array['submitted_by'], $array['submitted_date'], 
               $array['last_updated'], $array['appointment_date'], $array['appointment_time'],
-              $array['attachment_name'], $array['attachment_url'], $array['attachment_type']);
+              $array['attachment_name'], $array['attachment_url'], $array['attachment_type'],
+              $array['student_name']);
         
         return $array;
     }
