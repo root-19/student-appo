@@ -58,6 +58,16 @@ class Ticket extends Model
         $array['appointmentDate'] = $this->appointment_date?->format('Y-m-d');
         $array['appointmentTime'] = $this->appointment_time;
         
+        // Add student information from related user
+        if ($this->relationLoaded('user') && $this->user) {
+            $array['studentId'] = $this->user->student_id;
+            $array['studentEmail'] = $this->user->email;
+        } else {
+            // Fallback if user relationship not loaded
+            $array['studentId'] = null;
+            $array['studentEmail'] = null;
+        }
+        
         // Format attachment
         if ($this->attachment_name) {
             $array['attachment'] = [
