@@ -20,8 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['/^https?:\/\/([a-z0-9-]+\.)*school\.cateringreservation\.com\.mx$/'],
 
     'allowed_headers' => ['*'],
 
