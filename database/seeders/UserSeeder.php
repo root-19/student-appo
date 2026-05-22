@@ -59,6 +59,37 @@ class UserSeeder extends Seeder
                 'year_level' => '1st Year',
                 'status' => 'Active',
             ],
+            [
+                'name' => 'Admin PTC',
+                'email' => 'adminptc31@gmail.com',
+                'password' => Hash::make('adminptc123'),
+                'role' => 'Admin',
+                'department' => 'Student Affairs',
+                'status' => 'Active',
+            ],
+            [
+                'name' => 'Super Admin PTC',
+                'email' => 'superadminptc2k26@gmail.com',
+                'password' => Hash::make('superadminptc123'),
+                'role' => 'SuperAdmin',
+                'status' => 'Active',
+            ],
+            [
+                'name' => 'Registrar Staff PTC',
+                'email' => 'registrarstaff20k26@gmail.com',
+                'password' => Hash::make('registrarptc123'),
+                'role' => 'Registrar',
+                'department' => 'Registrar Office',
+                'status' => 'Active',
+            ],
+            [
+                'name' => 'Academic Staff PTC',
+                'email' => 'acadstaff2k26@gmail.com',
+                'password' => Hash::make('academicptc123'),
+                'role' => 'Academic',
+                'department' => 'Academic Affairs',
+                'status' => 'Active',
+            ],
         ];
 
         foreach ($users as $user) {

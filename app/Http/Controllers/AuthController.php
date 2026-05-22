@@ -39,9 +39,13 @@ class AuthController extends Controller
 
         // Send OTP email
         try {
-            Mail::raw("Your OTP code is: {$otp}\n\nThis code will expire in 10 minutes.", function ($message) use ($request) {
+            Mail::send('emails.otp', [
+                'otp' => $otp,
+                'name' => $user->name ?? 'Student',
+            ], function ($message) use ($request) {
                 $message->to($request->email)
-                    ->subject('Your OTP Code');
+                    ->subject('Your OTP Verification Code')
+                    ->from('noreply@ptc.edu.ph', 'Pateros Technological College');
             });
 
             return response()->json([
