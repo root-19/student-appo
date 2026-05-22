@@ -32,6 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Authentication routes
+Route::post('/send-otp', [AuthController::class, 'sendOTP']);
+Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
